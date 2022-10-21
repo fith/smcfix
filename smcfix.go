@@ -4,7 +4,7 @@ import (
 	"flag"
 	"log"
 	"os"
-	"smcfix/smcfixmod"
+	"smcfix/smcfixcli"
 	"smcfix/smcfixopt"
 )
 
@@ -33,8 +33,8 @@ func cli(opt smcfixopt.Smcfixopt) {
 	opt.UpdateOut()
 
 	if opt.File != "" {
-		smcfixmod.CleanFile(opt.File, opt.Out, opt.Overwrite)
+		smcfixcli.CleanFile(opt.File, opt.Out, opt.Overwrite)
 	} else {
-		smcfixmod.CleanFolder(opt.Dir, opt.Out, opt.Overwrite)
+		smcfixcli.CleanFolder(opt.Dir, opt.Out, opt.Overwrite)
 	}
 }
