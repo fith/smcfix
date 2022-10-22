@@ -1,6 +1,6 @@
 SMCFIX
 
-![SMCFIX Icon](https://github.com/fith/smcfix/blob/main/assets/icon.png?raw=true)
+<img alt="SMCFix icon, a SNES cart guillotine." src="https://github.com/fith/smcfix/blob/main/assets/icon.png?raw=true" width="128"/>
 
 Cross-platform command line and GUI tool for removing headers on .smc files (SNES ROMs).
 
