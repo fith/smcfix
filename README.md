@@ -16,6 +16,7 @@ existing files or create new ones with a suffix.
 Barebones right now. Might be a naive implementation, but has fixed all the broken
 ROMs I found to test on.
 
+<pre>
 Usage of ./smcfix:
   -dir string
     	Directory to scan for SMC files. (default "/Users/kevin/Workspace/smcfix/bin/mac")
@@ -27,5 +28,6 @@ Usage of ./smcfix:
     	Specify alternate output directory.
   -overwrite
     	Overwrite or create new e.g. "[filename]-smcfix.smc" (default false)
-      
+</pre>
+
 For smcfix.app the command line utility would be run from smcfix.app/Contents/MacOS/smcfix
