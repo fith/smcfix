@@ -20,7 +20,7 @@ ROMs I found to test on.
 
 Cross-platform GUI using Fyne (https://fyne.io). I don't love it, but it's functional.
 
-<img alt="SMCFix icon, a SNES cart guillotine." src="https://github.com/fith/smcfix/blob/main/assets/screenshow.png?raw=true" />
+<img alt="SMCFix icon, a SNES cart guillotine." src="https://github.com/fith/smcfix/blob/main/assets/screenshot.png?raw=true" />
 
 <h3>Cli</h3>
 <pre>
