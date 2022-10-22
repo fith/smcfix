@@ -16,6 +16,13 @@ existing files or create new ones with a suffix.
 Barebones right now. Might be a naive implementation, but has fixed all the broken
 ROMs I found to test on.
 
+<h3>Gui</h3>
+
+Cross-platform GUI using Fyne (https://fyne.io). I don't love it, but it's functional.
+
+<img alt="SMCFix icon, a SNES cart guillotine." src="https://github.com/fith/smcfix/blob/main/assets/screenshow.png?raw=true" />
+
+<h3>Cli</h3>
 <pre>
 Usage of ./smcfix:
   -dir string
@@ -30,4 +37,9 @@ Usage of ./smcfix:
     	Overwrite or create new e.g. "[filename]-smcfix.smc" (default false)
 </pre>
 
-For smcfix.app the command line utility would be run from smcfix.app/Contents/MacOS/smcfix
+For smcfix.app the command line utility would be run from the exacutable inside the .app package:
+
+Example:
+<pre>
+./smcfix.app/Contents/MacOS/smcfix -dir /Users/kevin/roms/snes -overwrite=true
+</pre>
