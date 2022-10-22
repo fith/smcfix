@@ -18,7 +18,7 @@ ROMs I found to test on.
 
 <h3>Gui</h3>
 
-Cross-platform GUI using Fyne (https://fyne.io). I don't love it, but it's functional.
+Cross-platform GUI using Fyne (https://fyne.io). I don't love it, but it's functional. I'd never used Fyne before, and I barely know Go, so if you're reviewing this: sorry about the slapdash prototype.
 
 <img alt="SMCFix icon, a SNES cart guillotine." src="https://github.com/fith/smcfix/blob/main/assets/screenshot.png?raw=true" />
 
