@@ -1,8 +1,8 @@
 SMCFIX
 
-Cross-platform command line tool for removing headers on .smc files (SNES ROMs).
+Cross-platform command line and GUI tool for removing headers on .smc files (SNES ROMs).
 
-These headers are often added to hold metadata for software emulators, but
+SMC headers are often added to hold metadata for software emulators, but
 altering the original format breaks the ROM for FPGA emulation which expects
 original-hardware accurate data.
 
@@ -25,3 +25,5 @@ Usage of ./smcfix:
     	Specify alternate output directory.
   -overwrite
     	Overwrite or create new e.g. "[filename]-smcfix.smc" (default false)
+      
+For smcfix.app the command line utility would be run from smcfix.app/Contents/MacOS/smcfix
