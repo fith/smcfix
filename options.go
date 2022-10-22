@@ -1,4 +1,4 @@
-package smcfixopt
+package main
 
 import (
 	"flag"
@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 )
 
-type Smcfixopt struct {
+type Options struct {
 	Dir       string
 	File      string
 	Out       string
@@ -15,7 +15,7 @@ type Smcfixopt struct {
 	Help      bool
 }
 
-func (opt *Smcfixopt) ValidateFile() {
+func (opt *Options) ValidateFile() {
 	ext := filepath.Ext(opt.File)
 	if ext != ".smc" {
 		fmt.Println("Error: Not a .smc file.")
@@ -23,7 +23,7 @@ func (opt *Smcfixopt) ValidateFile() {
 	}
 }
 
-func (opt *Smcfixopt) UpdateOut() {
+func (opt *Options) UpdateOut() {
 	if isFlagPassed("out") {
 		return
 	}
@@ -34,7 +34,7 @@ func (opt *Smcfixopt) UpdateOut() {
 	}
 }
 
-func (opt *Smcfixopt) ValidateFlags() {
+func (opt *Options) ValidateFlags() {
 	if opt.Help {
 		flag.Usage()
 		os.Exit(0)
@@ -61,6 +61,6 @@ func isFlagPassed(name string) bool {
 	return found
 }
 
-func (opt *Smcfixopt) Count() int {
+func (opt *Options) Count() int {
 	return flag.NFlag()
 }

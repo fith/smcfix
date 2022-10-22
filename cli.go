@@ -1,4 +1,4 @@
-package smcfixcli
+package main
 
 import (
 	"fmt"
@@ -12,41 +12,52 @@ import (
 
 const SUFFIX = "-smcfix"
 
-func CleanFolder(path string, outDir string, overwrite bool) {
+type CliResults struct {
+	Total   int
+	Done    int
+	Updated int
+	Failed  int
+}
+
+type Cli struct {
+	Results CliResults
+}
+
+func (s *Cli) Reset() {
+	s.Results = CliResults{}
+}
+
+func (s *Cli) CleanFolder(path string, outDir string, overwrite bool) {
 	files := find(path, ".smc")
-	fmt.Printf("Found %d .smc files in %s\n", len(files), path)
+	//fmt.Printf("Found %d .smc files in %s\n", len(files), path)
+	s.Results.Total = len(files)
 	for _, element := range files {
-		CleanFile(element, outDir, overwrite)
+		s.CleanFile(element, outDir, overwrite)
 	}
 }
 
-func CleanFile(path string, outDir string, overwrite bool) {
+func (s *Cli) CleanFile(path string, outDir string, overwrite bool) {
+	if s.Results.Total == 0 {
+		s.Results.Total = 1
+	}
 	fin, err := os.Open(path)
 	if err != nil {
 		panic(err)
 	}
 	defer fin.Close()
-	filename := filepath.Base(path)
-
-	fmt.Print(filename)
+	fmt.Print(filepath.Base(path))
 	headerSize, err := headerSize(fin)
 	if err != nil {
 		fmt.Print(" 💀 Failed.\n")
+		s.Results.Failed++
 		return
 	}
 	if headerSize > 0 { // has smc header
 		// create output file name
 		outfile := createOutFilepath(path, outDir)
 		outfile = outfile[:len(outfile)-4]
-		if !overwrite {
-			outfile = outfile + SUFFIX
-		}
+		outfile = outfile + SUFFIX
 		outfile = outfile + ".smc"
-		// check if it already exists.
-		if fileExists(outfile) {
-			fmt.Printf(" ♻️ File Exists: %s \n", outfile)
-			return
-		}
 
 		func() {
 			fout, err := os.Create(outfile)
@@ -73,10 +84,12 @@ func CleanFile(path string, outDir string, overwrite bool) {
 				moveFile(path, outfile)
 				outfile = path
 			}
-			fmt.Printf(" 🧼 " + outfile + " ✅\n")
+			fmt.Printf(" 🧼 " + filepath.Base(outfile) + " ✅\n")
+			s.Results.Updated++
 		}()
 	} else {
 		fmt.Printf(" ✅\n")
+		s.Results.Done++
 	}
 }
 

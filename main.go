@@ -2,10 +2,9 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"os"
-	"smcfix/smcfixcli"
-	"smcfix/smcfixopt"
 )
 
 func main() {
@@ -14,7 +13,7 @@ func main() {
 		log.Println(err)
 	}
 
-	var opt smcfixopt.Smcfixopt
+	var opt Options
 
 	flag.StringVar(&opt.Dir, "dir", workingDir, "Directory to scan for SMC files.")
 	flag.StringVar(&opt.File, "file", "", "Single SMC file to check and clean.")
@@ -23,18 +22,33 @@ func main() {
 	flag.BoolVar(&opt.Help, "help", false, "Show this help.")
 	flag.Parse()
 
-	cli(opt)
+	if opt.Count() == 0 {
+		gui()
+	} else {
+		cli(opt)
+	}
 }
 
-func cli(opt smcfixopt.Smcfixopt) {
+func cli(opt Options) {
 	// Usage demo
 	opt.ValidateFlags()
 	opt.ValidateFile()
 	opt.UpdateOut()
 
+	var s Cli
+
 	if opt.File != "" {
-		smcfixcli.CleanFile(opt.File, opt.Out, opt.Overwrite)
+		s.CleanFile(opt.File, opt.Out, opt.Overwrite)
 	} else {
-		smcfixcli.CleanFolder(opt.Dir, opt.Out, opt.Overwrite)
+		s.CleanFolder(opt.Dir, opt.Out, opt.Overwrite)
 	}
+	fmt.Println("Results\n")
+	fmt.Printf("Checked: \t%d\n", s.Results.Total)
+	fmt.Printf("Updated: \t%d\n", s.Results.Updated)
+	fmt.Printf("Failed: \t%d\n", s.Results.Failed)
+}
+
+func gui() {
+	var gui Gui
+	gui.Start()
 }
