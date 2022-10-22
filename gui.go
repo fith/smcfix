@@ -55,7 +55,7 @@ func (gui *Gui) viewMain() fyne.CanvasObject {
 
 	// row1
 	// [file path label]
-	filepathlabel := widget.NewLabel("Choose a directory or .smc file…")
+	filepathlabel := widget.NewLabel("Choose the location of an .smc file…")
 	row1 := container.NewMax(filepathlabel)
 
 	// row2
