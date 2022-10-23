@@ -2,7 +2,9 @@ SMCFIX
 
 <img alt="SMCFix icon, a SNES cart guillotine." src="https://github.com/fith/smcfix/blob/main/assets/icon.png?raw=true" width="128"/>
 
-Cross-platform command line and GUI tool for removing headers on .smc files (SNES ROMs).
+Chop headers off .smc SNES roms!
+
+Cross-platform command line and GUI tool for removing headers on .smc files (SNES ROMs) so they work with FPGA hardware emulators.
 
 SMC headers are often added to hold metadata for software emulators, but
 altering the original format breaks the ROM for FPGA emulation which expects
