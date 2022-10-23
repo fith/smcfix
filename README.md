@@ -2,7 +2,7 @@ SMCFIX
 
 <img alt="SMCFix icon, a SNES cart guillotine." src="https://github.com/fith/smcfix/blob/main/assets/icon.png?raw=true" width="128"/>
 
-Chop headers off .smc SNES roms!
+Chop headers off SNES roms!
 
 Cross-platform command line and GUI tool for removing headers on .smc files (SNES ROMs) so they work with FPGA hardware emulators.
 
