@@ -18,13 +18,13 @@ existing files or create new ones with a suffix.
 Barebones right now. Might be a naive implementation, but has fixed all the broken
 ROMs I found to test on.
 
-<h3>Gui</h3>
+<h3>GUI</h3>
 
 Cross-platform GUI using Fyne (https://fyne.io). I don't love it, but it's functional. I'd never used Fyne before, and I barely know Go, so if you're reviewing this: sorry about the slapdash prototype.
 
 <img alt="SMCFix icon, a SNES cart guillotine." src="https://github.com/fith/smcfix/blob/main/assets/screenshot.png?raw=true" />
 
-<h3>Cli</h3>
+<h3>CLI</h3>
 <pre>
 Usage of ./smcfix:
   -dir string
